@@ -9,4 +9,4 @@ else:
 #es el modulo, representado por %, lo que hace es arrojar el residuo de la división, en este caso
 #entre 2; así sabemos si el número es divisible entre 2 (par) o no (impar).
 
-# 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
+# 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 (TOKEN)

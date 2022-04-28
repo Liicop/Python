@@ -11,3 +11,5 @@ while len(word) > 1 or x == False :
 vocales = 'aeiou'
 word1 = word.lower()
 print(word ," es una vocal") if word1 in vocales else print(word, "es una consonante")
+
+# este programa al ingresar una letra nos dice si es vocal o consonante.
