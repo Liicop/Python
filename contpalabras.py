@@ -1,3 +1,5 @@
+#       |CONTADOR DE PALABRAS |
+
 num_words = input("ingrese una frase: ")
 
 num_words.strip()
