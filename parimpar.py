@@ -1,4 +1,4 @@
-#       | PAR I IMPAR |
+#       | DETERMINAR SI UN NÚMERO ES PAR O IMPAR |
 incognita = int(input("ingrese un número entre 1 y 1000 y le diremos si es par ó impar: "))
 if incognita <= 1000 and incognita >= 1:
     print(incognita, "es un número par") if incognita % 2 == 0 else print(incognita, "es un número impar")     
