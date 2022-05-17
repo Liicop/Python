@@ -11,3 +11,7 @@ Experimento 2
 git rebase nos sirve para combinar una extensión/arreglo de nuestro proyecto
 sin necesidad de especificar el autor de cada commit ni una historia completa; 
 se añaden los cambios, un comando un tanto prágmatico.
+
+También tenemos el comando git rebase --continue que permite hacer el rebase 
+luego de haber solucionado algún tipo de conflicto, para posteriormente hacer el
+commit.
