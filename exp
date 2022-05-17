@@ -7,3 +7,7 @@ Main 2
 Experimento 1
 
 Experimento 2
+
+git rebase nos sirve para combinar una extensión/arreglo de nuestro proyecto
+sin necesidad de especificar el autor de cada commit ni una historia completa; 
+se añaden los cambios, un comando un tanto prágmatico.
