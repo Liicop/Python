@@ -3,8 +3,7 @@ word = input("ingrese una palabra a codificar: ")
 number = int(input("ingrese un número menor que 26 para codificar: "))
 word = word.lower()     
 abecedario = 'abcdefghijklmnopqrstuvwxyz'
-   
-encrypt = 0
+
 encphrase = ''
 for i in word:
     codi = abecedario.index(i) #funciona con .find() y con .index()
