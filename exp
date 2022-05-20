@@ -22,4 +22,4 @@ Probamos por primera vez git cherry-pick, veremos que tal.
 
 Al parecer se debe tener mucho cuidado con cherry-pick.
 
-
+No es una buena práctica, pero puede funcionar en ciertos casos; usarlo con sabiduría.
