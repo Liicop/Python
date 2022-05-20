@@ -15,3 +15,7 @@ se añaden los cambios, un comando un tanto prágmatico.
 También tenemos el comando git rebase --continue que permite hacer el rebase 
 luego de haber solucionado algún tipo de conflicto, para posteriormente hacer el
 commit.
+
+Probando el git stash. Muy interesante, pero se debe tener bastante cuidado con los comandos.
+
+Probamos por primera vez git cherry-pick, veremos que tal.
