@@ -21,3 +21,7 @@ commit.
 Probando el git stash. Muy interesante, pero se debe tener bastante cuidado con los comandos.
 
 Probamos por primera vez git cherry-pick, veremos que tal.
+
+Al parecer se debe tener mucho cuidado con cherry-pick.
+
+
