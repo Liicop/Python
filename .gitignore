@@ -1,2 +1,3 @@
 #Archivos que se mantendrán ocultos
 *.txt
+Venv/
