@@ -95,7 +95,7 @@ def run():
     #print(adults)
     print(python_devs == python_devs2)
     print(platzi_workers == platzi_workers2)
-    print(adults == adults2)
+    print(adults == adults2) 
    
 
 

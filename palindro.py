@@ -11,3 +11,6 @@ print(revphrase)
 
 #este ejercicio nos permite saber si una palabra es palindromo o no, es decir que se escribe igual 
 #de izquierda a derecha que de derecha a izquierda.
+
+
+
