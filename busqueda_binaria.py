@@ -37,11 +37,13 @@ def busqueda_binaria(objetivo):
 
 
     print(f'La raiz cuadrada de {objetivo} es aproximadamente {resultado}')
-    print(f'Timepo estimado de busqueda {round(time.time() - start_time,4)} segundos')
+    print(f'Timepo estimado de busqueda {round(time.time() - start_time,5)} segundos')
 
 #raiz = int(input("Ingrese un entero para hallar su raiz cuadrada: "))
 #busqueda_binaria(raiz)
-help(busqueda_binaria)
+#help(busqueda_binaria)
+
+busqueda_binaria(299666666699)
 
 """  
 
