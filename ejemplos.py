@@ -1,5 +1,10 @@
+from datetime import datetime
 import math
 import time
+import random
+import os
+from tablero import tablero, board 
+
 
 """
 
@@ -65,7 +70,7 @@ print(f'El puntaje es {puntaje}')'''
 
 #polinomio x**3 + 2x**2 -4x + 3, 3.42
 
-
+'''
 def enu_exhaustiva(lim_infe, lim_supe):
         start = time.time()
         repeticiones = 0
@@ -130,28 +135,172 @@ print('Repeticiones: ', biseccion(lim_infe, lim_supe)[1])
 print('Raíz = ', biseccion(lim_infe, lim_supe)[0])
 print(f'Time: {round(-time.time()+biseccion(lim_infe, lim_supe)[2],4)}')
 
-      
+      '''
+
+def execution_time(func):
+    def wrapper(*args, **kwargs):
+        initial_time = datetime.now()
+        func(*args, **kwargs)
+        final_time = datetime.now()
+        time_elapsed = final_time - initial_time
+        print('Duración del juego:', round(time_elapsed.total_seconds(),2), 'segundos', '\n')
+    return wrapper
+
+def imprimir(board):  #imprimir tablero
+    for i in range(1,10):
+        print(board[i-1],' | ', end='')
+        if i%3 == 0:
+            print('')
+
+def aleatorio(board):  # ubicación random
+    while True:
+        ran = random.randint(0, 8)  # .randint()
+        if board[ran] == ' ':  # si encuentra un espacio vacio pone una o
+            board[ran] = 'o'
+            break
+
+
+def filas(board):  # impedir que gane en las filas
+
+    if board[:3].count('x') == 2 and board[:3].count(' ') == 1: 
+        # .count cuenta las x y si hay dos en esa fila pone una o para evitar que gane
+        a = board[:3].index(' ') # .index encuentra el espacio vacio y ahí pone la o
+        board[a] = 'o'
+    elif board[3:6].count('x') == 2 and board[3:6].count(' ') == 1:
+        a = board[3:6].index(' ')
+        a+=3
+        board[a] = 'o'
+    elif board[6:].count('x') == 2 and board[6:].count(' ') == 1:
+        a = board[6:].index(' ')
+        a+=6
+        board[a] = 'o'
+    else:
+        return False
+    return True
+
+def columnas(board):
+    columns = [            # lista que contiene las columnas del juego
+    [board[0],board[3],board[6]], 
+    [board[1],board[4],board[7]], 
+    [board[2],board[5],board[8]]
+    ]
+
+    if (columns[0].count('x') == 2 or columns[0].count('o') == 2) and columns[0].count(' ') == 1:
+        # .count cuenta las x y si hay dos en esa columnas pone una o para evitar que gane
+        a = columns[0].index(' ') * 3   # .index encuentra el espacio vacio y ahí pone la o
+        board[a] = 'o'
+    elif (columns[1].count('x') == 2 or columns[1].count('o') == 2) and columns[1].count(' ') == 1:
+        a = columns[1].index(' ') * 3 + 1
+        board[a] = 'o'
+    elif (columns[2].count('x') == 2 or columns[2].count('o') == 2) and columns[2].count(' ') == 1:
+        a = columns[2].index(' ') * 3 + 2
+        board[a] = 'o'
+    else:
+        return False
+    return True
+
+def diagonal(board):
+    diagonales = [   # lista con  las diagonales
+        [board[0], board[4], board[8]],
+        [board[2], board[4], board[6]]
+    ]
+
+    if (diagonales[0].count('x') == 2 or diagonales[0].count('o') == 2) and diagonales[0].count(' ') == 1:
+         # .count cuenta las x y si hay dos en esa diagonales pone una o para evitar que gane
+        a = diagonales[0].index(' ') * 4  # .index encuentra el espacio vacio y ahí pone la o
+        board[a] = 'o'
+    elif (diagonales[1].count('x') == 2 or diagonales[1].count('o') == 2) and diagonales[1].count(' ') == 1:
+        a = diagonales[1].index(' ') * 2 + 2
+        board[a] = 'o'
+    else:
+        return False
+    return True
 
 
 
 
+def ganador(board):
+    
+    tablero = [   # lista con las filas, columnas y diagonales
+        [board[0],board[1],board[2]],
+        [board[3],board[4],board[5]],
+        [board[6],board[7],board[8]],
+        [board[0],board[3],board[6]], 
+        [board[1],board[4],board[7]], 
+        [board[2],board[5],board[8]],
+        [board[0],board[4],board[8]],
+        [board[2],board[4],board[6]]
+    ]
+    
+    for i in range(8):
+        if tablero[i].count('x') == 3:  
+            # verifica si hay tres x  en la misma significa que alguien ganó
+            print('\nGanaste')
+            return True
+        elif tablero[i].count('o') == 3:
+             # verifica si hay tres o en la misma significa que alguien ganó
+            print('\nSigue intentándolo')
+            return True
+    return False
+
+location = {   #corregir ubicación del tablero
+    0:7,
+    1:8,
+    2:9,
+    3:4,
+    4:5,
+    5:6,
+    6:1,
+    7:2,
+    8:3
+}
 
 
+#inicio juego
+@execution_time
+def main(board):  # función que contiene el juego
 
+    while True:
 
+        imprimir(board) 
+        
+        if ganador(board):
+            break
 
+        while True:  #ciclo para pedir al usuario su movimiento
+            user = int(input('Ingrese la casilla de su jugada: ')) # variable para número de la casilla
+            user -= 1
+            user = location[user]
+            if board[user-1] != ' ': #verificar que esté libre
+                print('\nCasilla ocupada')     
+            else:
+                board[user-1] = 'x' #asigna
+                break
 
+        if ganador(board):
+            break
+        
+        if filas(board):
+            continue
+        elif columnas(board):
+            continue
+        elif diagonal(board):
+            continue
+        elif board.count(' ') == 0:
+            print('\nEl juego ha terminado en empate\n')
+            break    
+        else:
+            aleatorio(board)
 
+    imprimir(board)
+    print('\nJuego finalizado')
 
-
-
-
-
-
-
-
-
-
-
-
-
+while True:
+    continuar = input('Desea jugar Tic Tac Toe y/n --> ')
+    os.system('clear')
+    if continuar == 'y':
+        board = [' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ']  #tablero
+        main(board)
+    elif continuar == 'n':
+        print('Juego terminado')
+        break

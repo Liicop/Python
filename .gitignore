@@ -1,3 +1,5 @@
-#Archivos que se mantendrán ocultos
+#Archivos/Directorios que se mantendrán ocultos
 *.txt
 Venv/
+__pycache__
+Virtual_envir
